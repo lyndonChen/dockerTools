@@ -1,17 +1,27 @@
-1.°²×°centos 7 ÏµÍ³
-²é¿´SELinux×´Ì¬£º
-1¡¢/usr/sbin/sestatus -v      ##Èç¹ûSELinux status²ÎÊıÎªenabled¼´Îª¿ªÆô×´Ì¬
+## 1.å®‰è£…centos 7 ç³»ç»Ÿ
+###æŸ¥çœ‹SELinuxçŠ¶æ€ï¼š
+```linux
+/usr/sbin/sestatus -v          ##å¦‚æœSELinux statuså‚æ•°ä¸ºenabledå³ä¸ºå¼€å¯çŠ¶æ€
 SELinux status:                 enabled
-2¡¢getenforce                 ##Ò²¿ÉÒÔÓÃÕâ¸öÃüÁî¼ì²é
-¹Ø±ÕSELinux£º
-1¡¢ÁÙÊ±¹Ø±Õ£¨²»ÓÃÖØÆô»úÆ÷£©£º
-setenforce 0                  ##ÉèÖÃSELinux ³ÉÎªpermissiveÄ£Ê½
-                              ##setenforce 1 ÉèÖÃSELinux ³ÉÎªenforcingÄ£Ê½
-2¡¢ĞŞ¸ÄÅäÖÃÎÄ¼şĞèÒªÖØÆô»úÆ÷£º
-ĞŞ¸Ä/etc/selinux/config ÎÄ¼ş
-½«SELINUX=enforcing¸ÄÎªSELINUX=disabled
-ÖØÆô»úÆ÷¼´¿É
-2.ÅäÖÃdocker Ô´
+getenforce                     ##ä¹Ÿå¯ä»¥ç”¨è¿™ä¸ªå‘½ä»¤æ£€æŸ¥
+```
+### å…³é—­SELinuxï¼š
+1ã€ä¸´æ—¶å…³é—­ï¼ˆä¸ç”¨é‡å¯æœºå™¨ï¼‰ï¼š
+
+```linux
+setenforce 0 Â  Â  Â  Â  Â  Â  Â  Â   ##è®¾ç½®SELinux æˆä¸ºpermissiveæ¨¡å¼ Â   setenforce 1 è®¾ç½®SELinux æˆä¸ºenforcingæ¨¡å¼
+```
+
+2ã€ä¿®æ”¹é…ç½®æ–‡ä»¶éœ€è¦é‡å¯æœºå™¨ï¼š
+
+ä¿®æ”¹/etc/selinux/config æ–‡ä»¶
+
+å°†SELINUX=enforcingæ”¹ä¸ºSELINUX=disabled
+
+é‡å¯æœºå™¨å³å¯
+## 2.é…ç½®docker æº
+
+```linux
 vim /etc/yum.repos.d/docker.repo
 [dockerrepo]
 name=Docker Repository
@@ -19,31 +29,34 @@ baseurl=https://yum.dockerproject.org/repo/main/centos/7/
 enabled=1
 gpgcheck=1
 gpgkey=https://yum.dockerproject.org/gpg
+```
 
-3.°²×°docker
+## 3.å®‰è£…docker
+```linux
 yum install docker-engine
-
-4.ÅäÖÃdockerÆô¶¯
+```
+### 4.é…ç½®dockerå¯åŠ¨
+```linux
 systemctl start docker.service 
 systemctl enable docker.service 
+```
+### 5.æœåŠ¡ç«¯å®‰è£…shipyard
 
-5.·şÎñ¶Ë°²×°shipyard
-Ö´ĞĞshipyard.sh
+æ‰§è¡Œshipyard.sh
 
 
 
-6.¿Í»§¶Ë°²×°
+### 6.å®¢æˆ·ç«¯å®‰è£…
+```linux
 vi /usr/lib/sysctl.d/00-system.conf
 net.ipv4.ip_forward=1
 /etc/init.d/network restart
-
+```
+```
 curl -sSL https://shipyard-project.com/deploy | ACTION=node DISCOVERY=etcd://192.168.36.172:4001 bash -s
-
-
-
-iptables -t nat -A PREROUTING -p tcp ¨Cdport 9000 -j DNAT ¨Cto 192.168.203.128:9000
-
-
+```
+å…¶ä¸­192.168.36.172:4001æ˜¯shipyardå®‰è£…æœåŠ¡å™¨IPåœ°å€
+### 7ã€å‚è€ƒèµ„æ–™
 
 http://www.cnblogs.com/zhiqli/p/4946119.html
 
