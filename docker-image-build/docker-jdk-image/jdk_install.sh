@@ -6,3 +6,5 @@ export JAVA_HOME=/usr/local/jdk1.7.0_15
 export PATH=\$JAVA_HOME/bin:\$PATH
 export CLASSPATH=.:\$JAVA_HOME/lib/dt.jar:\$JAVA_HOME/lib/tools.jar
 EOF
+
+source /etc/profile
