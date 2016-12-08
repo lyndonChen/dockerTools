@@ -2,7 +2,9 @@
 ###查看SELinux状态：
 `
 /usr/sbin/sestatus -v          ##如果SELinux status参数为enabled即为开启状态
+
 SELinux status:                 enabled
+
 getenforce                     ##也可以用这个命令检查
 `
 ### 关闭SELinux：
@@ -23,11 +25,17 @@ setenforce 0                  ##设置SELinux 成为permissive模式   
 
 `
 vim /etc/yum.repos.d/docker.repo
+
 [dockerrepo]
+
 name=Docker Repository
+
 baseurl=https://yum.dockerproject.org/repo/main/centos/7/
+
 enabled=1
+
 gpgcheck=1
+
 gpgkey=https://yum.dockerproject.org/gpg
 `
 
@@ -36,11 +44,11 @@ gpgkey=https://yum.dockerproject.org/gpg
 yum install docker-engine
 `
 ### 4.配置docker启动
-
+`
 systemctl start docker.service 
 
 systemctl enable docker.service 
-
+`
 ### 5.服务端安装shipyard
 
 执行shipyard.sh
@@ -50,7 +58,9 @@ systemctl enable docker.service
 ### 6.客户端安装
 `
 vi /usr/lib/sysctl.d/00-system.conf
+
 net.ipv4.ip_forward=1
+
 /etc/init.d/network restart
 `
 `
