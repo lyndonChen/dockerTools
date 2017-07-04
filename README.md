@@ -1,5 +1,5 @@
 # dockerTools
-本项目主要用于记录学习docker日志，存贮学习docker过程中写的一个工具，脚本和docker镜像制作文件等
+本项目主要用于记录学习docker日志，保存学习docker过程中写的一些shell脚本，脚本和docker镜像制作文件等
 ## docker-manager
 docker环境安装，docker可视化管理界面shipyard安装
 ## docker-image-build
